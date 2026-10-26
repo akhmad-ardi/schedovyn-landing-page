@@ -1,0 +1,54 @@
+---
+import { SITE_CONFIG } from '@/data/site-config';
+import { Badge } from '@/components/ui/badge';
+import { ArrowRight, Sliders, Database, LayoutGrid, Download } from 'lucide-react';
+---
+
+<section id="cara-kerja" class="border-b border-border bg-background py-14 sm:py-18 lg:py-24 scroll-mt-16">
+  <div class="px-4 sm:px-6 lg:px-8 space-y-10">
+    <!-- Section Header -->
+    <div class="max-w-2xl space-y-3">
+      <div class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+        <span>[05 / ALUR KERJA]</span>
+        <span class="mx-1">:</span>
+        <span>4 Langkah Dari Nol ke Jadwal Final</span>
+      </div>
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight">
+        Alur Penyusunan Jadwal yang Praktis dan Terarah.
+      </h2>
+      <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+        Ikuti 4 tahapan sederhana untuk menerbitkan jadwal sekolah bebas bentrokan tanpa harus berkutat dengan rumus spreadsheet yang membingungkan.
+      </p>
+    </div>
+
+    <!-- 4 Step Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {SITE_CONFIG.workflowSteps.map((step) => (
+        <div class="rounded-none border border-border bg-card p-6 flex flex-col justify-between shadow-none space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-2xl font-bold text-primary tabular-nums tracking-tight">
+                {step.stepNumber}
+              </span>
+              <Badge variant="primary" className="text-[10px]">
+                {step.highlightTag}
+              </Badge>
+            </div>
+
+            <h3 class="font-heading font-bold text-base text-foreground leading-snug">
+              {step.title}
+            </h3>
+
+            <p class="text-xs text-muted-foreground leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+
+          <div class="border-t border-border/60 pt-3 text-[11px] text-foreground/80 font-mono">
+            {step.detail}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

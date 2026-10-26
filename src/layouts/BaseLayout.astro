@@ -1,0 +1,89 @@
+---
+import '@fontsource-variable/figtree';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { SITE_CONFIG } from '@/data/site-config';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = `${SITE_CONFIG.brandName} - ${SITE_CONFIG.tagline}: Susun Jadwal Sekolah Tanpa Bentrokan`,
+  description = 'Aplikasi Smart Timetable Planner berbasis visual drag-and-drop dengan deteksi konflik lintas kelas otomatis. Berjalan 100% di browser Anda: tanpa login, tanpa server, dan siap digunakan secara offline.',
+  ogImage = '/og-cover.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || SITE_CONFIG.siteUrl);
+const fullOgImageUrl = new URL(ogImage, Astro.site || SITE_CONFIG.siteUrl).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: SITE_CONFIG.brandName,
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: 'All (Web Browser, PWA)',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'IDR',
+  },
+  description: description,
+  url: SITE_CONFIG.siteUrl,
+  softwareVersion: '1.0',
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favico.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImageUrl} />
+    <meta property="og:site_name" content={SITE_CONFIG.brandName} />
+    <meta property="og:locale" content="id_ID" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImageUrl} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Anti-FOUC Theme Script -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('schedovyn-theme');
+          var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && systemDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground">
+    <div class="mx-auto max-w-7xl border-x border-border min-h-screen flex flex-col bg-background">
+      <slot />
+    </div>
+  </body>
+</html>

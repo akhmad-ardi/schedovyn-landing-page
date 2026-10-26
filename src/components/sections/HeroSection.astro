@@ -1,0 +1,263 @@
+---
+import { SITE_CONFIG } from '@/data/site-config';
+import TrustBar from '@/components/sections/TrustBar.astro';
+import { Badge } from '@/components/ui/badge';
+import {
+  ArrowRight,
+  BookOpen,
+  CheckCircle2,
+  Clock,
+  Copy,
+  Database,
+  RotateCcw,
+  RotateCw,
+  Sparkles,
+  Zap,
+} from 'lucide-react';
+---
+
+<section class="border-b border-border bg-background">
+  <div class="px-4 sm:px-6 lg:px-8 pt-12 pb-16 lg:pt-20 lg:pb-20 space-y-12">
+    <!-- Hero Copy & CTAs -->
+    <div class="max-w-3xl space-y-6">
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-none border border-border bg-muted/60 text-xs font-mono text-muted-foreground uppercase tracking-wider">
+        <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+        <span>Solusi Cerdas Penjadwalan Akademik</span>
+        <span>:</span>
+        <span class="text-foreground font-semibold">100% Local-First</span>
+      </div>
+
+      <h1 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-foreground tracking-tight leading-[1.15]">
+        Susun Jadwal Sekolah Tanpa Bentrokan Guru dan Ruangan.
+      </h1>
+
+      <p class="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-sans">
+        Aplikasi Smart Timetable Planner berbasis visual drag-and-drop dengan deteksi konflik lintas kelas otomatis. Berjalan 100% di browser Anda: tanpa login, tanpa server, dan siap digunakan secara offline.
+      </p>
+
+      <!-- CTA Button Row -->
+      <div class="space-y-3 pt-2">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <a
+            href={SITE_CONFIG.appUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-none bg-primary text-primary-foreground hover:bg-primary/90 border border-primary font-heading font-semibold text-sm sm:text-base transition-colors select-none shadow-xs"
+          >
+            <span>Mulai Susun Jadwal Sekarang</span>
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+
+          <a
+            href={SITE_CONFIG.guideUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-none bg-background text-foreground hover:bg-muted border border-border font-heading font-medium text-sm sm:text-base transition-colors select-none"
+          >
+            <BookOpen className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+            <span>Pelajari Panduan Pemakaian</span>
+          </a>
+        </div>
+
+        <p class="text-xs text-muted-foreground font-mono">
+          Gratis, tanpa registrasi akun, langsung berjalan di browser
+        </p>
+      </div>
+    </div>
+
+    <!-- Hero Mockup: 3 Panel Editor Schedovyn -->
+    <div class="rounded-none border border-border bg-card shadow-sm overflow-hidden space-y-0">
+      <!-- Toolbar Mockup -->
+      <div class="border-b border-border bg-muted/40 px-3 sm:px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-muted-foreground uppercase text-[10px]">Kelas Aktif:</span>
+          <span class="font-heading font-bold text-foreground px-2 py-0.5 rounded-none border border-border bg-background">
+            Kelas VII-A
+          </span>
+          <span class="inline-flex items-center gap-1 font-mono text-[11px] text-emerald-700 dark:text-emerald-400">
+            <Database className="h-3 w-3" aria-hidden="true" />
+            <span>Tersimpan di browser</span>
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2 flex-wrap">
+          <div class="hidden sm:flex items-center border border-border rounded-none divide-x divide-border bg-background">
+            <button type="button" class="px-2 py-1 text-[11px] text-muted-foreground hover:text-foreground flex items-center gap-1" title="Batal Perubahan (Ctrl+Z)">
+              <RotateCcw className="h-3 w-3" aria-hidden="true" />
+              <span>Batal Perubahan</span>
+            </button>
+            <button type="button" class="px-2 py-1 text-[11px] text-muted-foreground hover:text-foreground flex items-center gap-1" title="Ulangi Perubahan (Ctrl+Y)">
+              <RotateCw className="h-3 w-3" aria-hidden="true" />
+              <span>Ulangi Perubahan</span>
+            </button>
+          </div>
+
+          <button type="button" class="hidden md:inline-flex items-center gap-1 px-2.5 py-1 rounded-none border border-border bg-background text-[11px] font-medium text-foreground hover:bg-muted">
+            <Copy className="h-3 w-3" aria-hidden="true" />
+            <span>Salin Jadwal</span>
+          </button>
+
+          <Badge variant="emerald" className="text-[11px]">
+            <CheckCircle2 className="h-3 w-3 mr-1" aria-hidden="true" />
+            <span>Jadwal Lengkap dan Valid</span>
+          </Badge>
+        </div>
+      </div>
+
+      <!-- 3 Panel Layout Mockup -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-border bg-background">
+        <!-- Panel 1: Sesi Belum Terjadwal (Kiri) -->
+        <div class="lg:col-span-3 p-4 space-y-3 bg-muted/10">
+          <div class="flex items-center justify-between border-b border-border/70 pb-2">
+            <span class="font-heading font-semibold text-xs text-foreground uppercase tracking-wider">
+              Sesi Belum Terjadwal
+            </span>
+            <span class="font-mono text-[11px] text-muted-foreground tabular-nums">
+              3 Mapel
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <div class="p-2.5 rounded-none border border-border bg-card hover:border-primary/50 transition-colors">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-foreground">Matematika</span>
+                <span class="font-mono text-[10px] px-1.5 py-0.5 rounded-none bg-primary/10 text-primary font-bold tabular-nums">
+                  2 Jam Tersisa
+                </span>
+              </div>
+              <div class="text-[11px] text-muted-foreground mt-1 flex justify-between">
+                <span>Pak Budi</span>
+                <span>Ruang 7A</span>
+              </div>
+            </div>
+
+            <div class="p-2.5 rounded-none border border-border bg-card hover:border-primary/50 transition-colors">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-foreground">IPA Terpadu</span>
+                <span class="font-mono text-[10px] px-1.5 py-0.5 rounded-none bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 font-bold tabular-nums">
+                  1 Jam Tersisa
+                </span>
+              </div>
+              <div class="text-[11px] text-muted-foreground mt-1 flex justify-between">
+                <span>Bu Siti</span>
+                <span>Lab IPA</span>
+              </div>
+            </div>
+
+            <div class="p-2.5 rounded-none border border-border bg-card hover:border-primary/50 transition-colors">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-foreground">Bahasa Inggris</span>
+                <span class="font-mono text-[10px] px-1.5 py-0.5 rounded-none bg-violet-500/10 text-violet-800 dark:text-violet-300 font-bold tabular-nums">
+                  2 Jam Tersisa
+                </span>
+              </div>
+              <div class="text-[11px] text-muted-foreground mt-1 flex justify-between">
+                <span>Bu Dian</span>
+                <span>Ruang 7A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Grid Mingguan (Tengah) -->
+        <div class="lg:col-span-6 p-4 space-y-3 overflow-x-auto">
+          <div class="flex items-center justify-between border-b border-border/70 pb-2">
+            <span class="font-heading font-semibold text-xs text-foreground uppercase tracking-wider">
+              Matriks Mingguan (Senin - Jumat)
+            </span>
+            <span class="font-mono text-[11px] text-muted-foreground tabular-nums">
+              07:00 - 12:00
+            </span>
+          </div>
+
+          <div class="min-w-[420px] space-y-2">
+            <!-- Row: Senin -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-mono text-muted-foreground">
+                <span class="font-bold text-foreground">Senin</span>
+                <span class="tabular-nums">07:00 - 11:30</span>
+              </div>
+              <div class="grid grid-cols-6 gap-1 text-[11px]">
+                <div class="col-span-2 p-1.5 rounded-none border border-primary/40 bg-primary/10 text-primary">
+                  <div class="font-bold truncate">Matematika</div>
+                  <div class="text-[9px] font-mono tabular-nums opacity-80">07:00 - 08:30</div>
+                </div>
+                <div class="col-span-1 p-1 rounded-none border border-border bg-muted/60 text-center flex items-center justify-center font-mono text-[9px] text-muted-foreground">
+                  Istirahat
+                </div>
+                <div class="col-span-3 p-1.5 rounded-none border border-emerald-600/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300">
+                  <div class="font-bold truncate">IPA (Lab)</div>
+                  <div class="text-[9px] font-mono tabular-nums opacity-80">09:00 - 11:15</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row: Selasa -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-mono text-muted-foreground">
+                <span class="font-bold text-foreground">Selasa</span>
+                <span class="tabular-nums">07:00 - 11:30</span>
+              </div>
+              <div class="grid grid-cols-6 gap-1 text-[11px]">
+                <div class="col-span-3 p-1.5 rounded-none border border-sky-600/40 bg-sky-500/10 text-sky-800 dark:text-sky-300">
+                  <div class="font-bold truncate">B. Indonesia</div>
+                  <div class="text-[9px] font-mono tabular-nums opacity-80">07:00 - 09:15</div>
+                </div>
+                <div class="col-span-1 p-1 rounded-none border border-border bg-muted/60 text-center flex items-center justify-center font-mono text-[9px] text-muted-foreground">
+                  Istirahat
+                </div>
+                <div class="col-span-2 p-1.5 rounded-none border border-violet-600/40 bg-violet-500/10 text-violet-800 dark:text-violet-300">
+                  <div class="font-bold truncate">B. Inggris</div>
+                  <div class="text-[9px] font-mono tabular-nums opacity-80">09:30 - 11:00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Detail & Deteksi Konflik (Kanan) -->
+        <div class="lg:col-span-3 p-4 space-y-3 bg-muted/10">
+          <div class="flex items-center justify-between border-b border-border/70 pb-2">
+            <span class="font-heading font-semibold text-xs text-foreground uppercase tracking-wider">
+              Diagnostik Konflik
+            </span>
+            <span class="inline-flex items-center gap-1 font-mono text-[10px] text-primary tabular-nums">
+              <Zap className="h-2.5 w-2.5" aria-hidden="true" />
+              <span>&lt; 5 ms</span>
+            </span>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="p-2.5 rounded-none border border-emerald-600/40 bg-emerald-500/5 space-y-1">
+              <div class="flex items-center gap-1.5 font-bold text-emerald-800 dark:text-emerald-300">
+                <CheckCircle2 className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                <span>Pemeriksaan Guru</span>
+              </div>
+              <p class="text-[11px] text-muted-foreground leading-relaxed">
+                Semua guru mengajar di satu kelas pada jam yang sama (0 tabrakan).
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-none border border-emerald-600/40 bg-emerald-500/5 space-y-1">
+              <div class="flex items-center gap-1.5 font-bold text-emerald-800 dark:text-emerald-300">
+                <CheckCircle2 className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                <span>Utilisasi Ruangan</span>
+              </div>
+              <p class="text-[11px] text-muted-foreground leading-relaxed">
+                Lab IPA dan Lapangan tidak digunakan oleh dua kelas secara simultan.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-none border border-border bg-card text-[11px] text-muted-foreground">
+              <span class="font-semibold text-foreground">Pemindaian Menyeluruh: </span>
+              Pemeriksaan lintas kelas aktif setiap pergeseran sesi.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Bar attached to bottom of Hero -->
+  <TrustBar />
+</section>

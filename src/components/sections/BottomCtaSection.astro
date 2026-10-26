@@ -1,0 +1,55 @@
+---
+import { SITE_CONFIG } from '@/data/site-config';
+import { ArrowRight, BookOpen, ExternalLink, Sparkles } from 'lucide-react';
+---
+
+<section class="border-b border-border bg-muted/30 py-16 sm:py-20 lg:py-24">
+  <div class="px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto rounded-none border border-border bg-card p-6 sm:p-10 lg:p-12 text-center space-y-6 shadow-sm">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-none border border-border bg-muted text-xs font-mono text-muted-foreground uppercase tracking-wider">
+        <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+        <span>Mulai Sekarang</span>
+        <span>:</span>
+        <span class="text-foreground font-semibold">Gratis Tanpa Biaya</span>
+      </div>
+
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight max-w-2xl mx-auto leading-tight">
+        Siap Menyusun Jadwal Sekolah Tanpa Bentrokan?
+      </h2>
+
+      <p class="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+        Tinggalkan spreadsheet rumit dan mulai susun jadwal sekolah dengan deteksi konflik otomatis. Buka aplikasi di peramban Anda sekarang juga tanpa perlu mendaftar.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a
+          href={SITE_CONFIG.appUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-11 px-7 rounded-none bg-primary text-primary-foreground hover:bg-primary/90 border border-primary font-heading font-semibold text-sm sm:text-base transition-colors select-none shadow-xs"
+        >
+          <span>Buka Aplikasi Schedovyn</span>
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+
+        <a
+          href={SITE_CONFIG.guideUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-11 px-6 rounded-none bg-background text-foreground hover:bg-muted border border-border font-heading font-medium text-sm sm:text-base transition-colors select-none"
+        >
+          <BookOpen className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+          <span>Baca Panduan Lengkap</span>
+        </a>
+      </div>
+
+      <div class="pt-4 border-t border-border/60 text-xs text-muted-foreground font-mono flex items-center justify-center gap-4 flex-wrap">
+        <span>100% Gratis</span>
+        <span>-</span>
+        <span>Tanpa Registrasi Akun</span>
+        <span>-</span>
+        <span>Berjalan Offline</span>
+      </div>
+    </div>
+  </div>
+</section>

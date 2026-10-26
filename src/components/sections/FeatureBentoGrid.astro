@@ -1,0 +1,74 @@
+---
+import { FEATURE_BENTO_ITEMS } from '@/data/features';
+import { Badge } from '@/components/ui/badge';
+import {
+  Clock,
+  Users,
+  Copy,
+  History,
+  Database,
+  Keyboard,
+  CheckCircle,
+} from 'lucide-react';
+---
+
+<section id="fitur" class="border-b border-border bg-background py-14 sm:py-18 lg:py-24 scroll-mt-16">
+  <div class="px-4 sm:px-6 lg:px-8 space-y-10">
+    <!-- Section Header -->
+    <div class="max-w-2xl space-y-3">
+      <div class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+        <span>[03 / FITUR LENGKAP]</span>
+        <span class="mx-1">:</span>
+        <span>Spesifikasi Fungsional</span>
+      </div>
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight">
+        Alat Kerja Presisi untuk Menyusun Jadwal Sekolah.
+      </h2>
+      <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+        Dirancang dari bawah ke atas untuk menyelesaikan kerumitan riil di sekolah: mulai dari jam istirahat hari Jumat, batasan hari hadir guru, hingga penyalinan instan kelas paralel.
+      </p>
+    </div>
+
+    <!-- Bento Grid Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {FEATURE_BENTO_ITEMS.map((item) => (
+        <div class={`rounded-none border border-border bg-card p-6 flex flex-col justify-between shadow-none space-y-5 ${item.colSpanClass}`}>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="h-9 w-9 rounded-none border border-border bg-muted flex items-center justify-center text-primary">
+                {item.iconName === 'Clock' && <Clock className="h-4.5 w-4.5" aria-hidden="true" />}
+                {item.iconName === 'Users' && <Users className="h-4.5 w-4.5" aria-hidden="true" />}
+                {item.iconName === 'Copy' && <Copy className="h-4.5 w-4.5" aria-hidden="true" />}
+                {item.iconName === 'History' && <History className="h-4.5 w-4.5" aria-hidden="true" />}
+                {item.iconName === 'Database' && <Database className="h-4.5 w-4.5" aria-hidden="true" />}
+                {item.iconName === 'Keyboard' && <Keyboard className="h-4.5 w-4.5" aria-hidden="true" />}
+              </div>
+              <Badge variant="primary" className="text-[10px] font-mono">
+                {item.badge}
+              </Badge>
+            </div>
+
+            <div class="space-y-1.5">
+              <h3 class="font-heading font-bold text-base sm:text-lg text-foreground tracking-tight">
+                {item.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature Bullets -->
+          <ul class="space-y-2 border-t border-border/60 pt-4 text-xs text-muted-foreground">
+            {item.details.map((detail) => (
+              <li class="flex items-start gap-2">
+                <CheckCircle className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                <span class="leading-relaxed text-foreground/80">{detail}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

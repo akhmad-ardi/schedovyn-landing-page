@@ -1,11 +1,94 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Navbar from '@/components/layout/Navbar.astro';
+import Footer from '@/components/layout/Footer.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import ProblemSolutionSection from '@/components/sections/ProblemSolutionSection.astro';
+import FeatureBentoGrid from '@/components/sections/FeatureBentoGrid.astro';
+import HowItWorksSection from '@/components/sections/HowItWorksSection.astro';
+import PrivacyArchitectureSection from '@/components/sections/PrivacyArchitectureSection.astro';
+import BottomCtaSection from '@/components/sections/BottomCtaSection.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ConflictPlaygroundIsland from '@/components/islands/ConflictPlaygroundIsland';
+import ExportShowcaseTabsIsland from '@/components/islands/ExportShowcaseTabsIsland';
+import FaqAccordionIsland from '@/components/islands/FaqAccordionIsland';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+  <Navbar />
+  <main class="flex-1">
+    <HeroSection />
+    <ProblemSolutionSection />
+
+    <!-- Simulasi Konflik Interaktif Section -->
+    <section id="simulasi" class="border-b border-border bg-background py-14 sm:py-18 lg:py-24 scroll-mt-16">
+      <div class="px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="max-w-2xl space-y-3">
+          <div class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            <span>[02 / SIMULASI KONFLIK]</span>
+            <span class="mx-1">:</span>
+            <span>Uji Coba Langsung di Browser</span>
+          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight">
+            Rasakan Cepatnya Deteksi Bentrokan Waktu.
+          </h2>
+          <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Coba pilih skenario bentrokan guru atau irisan waktu istirahat di bawah ini. Schedovyn langsung mendeteksi dan memberi tahu penyebab tabrakan dalam waktu kurang dari 5 milidetik.
+          </p>
+        </div>
+
+        <ConflictPlaygroundIsland client:visible />
+      </div>
+    </section>
+
+    <FeatureBentoGrid />
+
+    <!-- Ekspor & Laporan Section -->
+    <section id="ekspor" class="border-b border-border bg-background py-14 sm:py-18 lg:py-24 scroll-mt-16">
+      <div class="px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="max-w-2xl space-y-3">
+          <div class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            <span>[04 / EKSPOR LAPORAN]</span>
+            <span class="mx-1">:</span>
+            <span>PDF Landscape & Excel Multi-Sheet</span>
+          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight">
+            Dokumen Siap Cetak dan Rekapitulasi Otomatis.
+          </h2>
+          <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Tidak perlu lagi membuat laporan jam mengajar guru secara manual. Schedovyn menghasilkan dokumen cetak rapi dan buku kerja spreadsheet dengan formula yang bersih.
+          </p>
+        </div>
+
+        <ExportShowcaseTabsIsland client:visible />
+      </div>
+    </section>
+
+    <HowItWorksSection />
+    <PrivacyArchitectureSection />
+
+    <!-- FAQ Section -->
+    <section id="faq" class="border-b border-border bg-background py-14 sm:py-18 lg:py-24 scroll-mt-16">
+      <div class="px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="max-w-2xl space-y-3">
+          <div class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            <span>[07 / TANYA JAWAB]</span>
+            <span class="mx-1">:</span>
+            <span>Pertanyaan yang Sering Diajukan</span>
+          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight">
+            Pertanyaan Umum Seputar Penggunaan Schedovyn.
+          </h2>
+          <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Semua hal yang perlu Anda ketahui mengenai lisensi gratis, cara kerja tanpa koneksi internet, hingga mekanisme penempatan jadwal.
+          </p>
+        </div>
+
+        <FaqAccordionIsland client:visible />
+      </div>
+    </section>
+
+    <BottomCtaSection />
+  </main>
+  <Footer />
+</BaseLayout>

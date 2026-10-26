@@ -1,0 +1,27 @@
+---
+import { SITE_CONFIG } from '@/data/site-config';
+import { ShieldCheck, Zap, FileSpreadsheet, WifiOff } from 'lucide-react';
+---
+
+<div class="border-y border-border bg-muted/20">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border">
+    {SITE_CONFIG.trustBarItems.map((item) => (
+      <div class="p-4 sm:p-5 flex items-start gap-3">
+        <div class="h-8 w-8 rounded-none border border-border bg-card flex items-center justify-center shrink-0 text-primary">
+          {item.id === 'client-side' && <ShieldCheck className="h-4 w-4" aria-hidden="true" />}
+          {item.id === 'conflict-detection' && <Zap className="h-4 w-4" aria-hidden="true" />}
+          {item.id === 'export-suite' && <FileSpreadsheet className="h-4 w-4" aria-hidden="true" />}
+          {item.id === 'pwa-offline' && <WifiOff className="h-4 w-4" aria-hidden="true" />}
+        </div>
+        <div class="space-y-0.5 min-w-0">
+          <div class="font-heading font-semibold text-xs sm:text-sm text-foreground leading-snug">
+            {item.label}
+          </div>
+          <p class="text-[11px] text-muted-foreground leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

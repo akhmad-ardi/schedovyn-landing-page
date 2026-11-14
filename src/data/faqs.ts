@@ -42,4 +42,10 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: 'Mengapa jadwal tetap diizinkan ditempatkan ke grid meskipun terjadi konflik?',
     answer: 'Schedovyn mengadopsi prinsip Non-Blocking Placement. Sistem tidak memblokir atau menolak peletakan sesi yang berbenturan, melainkan langsung menandainya dengan bingkai visual merah dan kode diagnostik. Pendekatan Non-Blocking Placement ini memberikan keleluasaan penuh bagi penyusun jadwal untuk menata skenario alternatif sebelum memutuskan resolusi terbaik.',
   },
+  {
+    id: 'faq-7',
+    category: 'Multi-Ruang Kerja & Semester Baru',
+    question: 'Bagaimana cara menyiapkan jadwal untuk semester baru atau membuat simulasi jadwal tanpa merusak jadwal yang sedang berjalan?',
+    answer: 'Schedovyn dilengkapi fitur Pengelolaan Multi-Ruang Kerja (Multi-Workspace). Melalui Workspace Switcher di bagian atas aplikasi, Anda dapat membuat banyak ruang kerja terpisah di satu peramban. Saat memasuki semester baru, gunakan fitur Duplikasi Ruang Kerja (Clone Workspace) dengan mode Konfigurasi & Data Master Saja agar seluruh data jam belajar, kelas, guru, mata pelajaran, dan ruangan langsung tersalin dengan jadwal kosong tanpa perlu mengetik ulang. Jika ingin bereksperimen menguji variasi jadwal, pilih mode Salin Penuh Beserta Jadwal yang terisolasi penuh di IndexedDB.',
+  },
 ];

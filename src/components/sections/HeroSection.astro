@@ -9,6 +9,7 @@ import {
   Clock,
   Copy,
   Database,
+  Layers,
   RotateCcw,
   RotateCw,
   Sparkles,
@@ -69,7 +70,13 @@ import {
     <div class="rounded-none border border-border bg-card shadow-sm overflow-hidden space-y-0">
       <!-- Toolbar Mockup -->
       <div class="border-b border-border bg-muted/40 px-3 sm:px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-mono text-muted-foreground uppercase text-[10px]">Ruang Kerja:</span>
+          <span class="inline-flex items-center gap-1.5 font-heading font-semibold text-foreground px-2 py-0.5 rounded-none border border-border bg-background">
+            <Layers className="h-3 w-3 text-primary" aria-hidden="true" />
+            <span>SMPN 1 Nusantara - Semester Ganjil</span>
+          </span>
+          <span class="text-border hidden sm:inline">|</span>
           <span class="font-mono text-muted-foreground uppercase text-[10px]">Kelas Aktif:</span>
           <span class="font-heading font-bold text-foreground px-2 py-0.5 rounded-none border border-border bg-background">
             Kelas VII-A
@@ -170,7 +177,7 @@ import {
             </span>
           </div>
 
-          <div class="min-w-105 space-y-2">
+          <div class="min-w-[420px] space-y-2">
             <!-- Row: Senin -->
             <div class="space-y-1">
               <div class="flex items-center justify-between text-[11px] font-mono text-muted-foreground">

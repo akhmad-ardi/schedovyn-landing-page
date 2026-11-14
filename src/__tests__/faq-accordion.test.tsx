@@ -3,13 +3,13 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
 import FaqAccordionIsland from '../components/islands/FaqAccordionIsland';
 
-describe('FaqAccordionIsland (FR-LP-09, NFR-LP-03)', () => {
-  it('merender seluruh 6 pertanyaan umum', () => {
+describe('FaqAccordionIsland (FR-LP-09, NFR-LP-03, AC-LP-07)', () => {
+  it('merender seluruh 7 pertanyaan umum', () => {
     render(<FaqAccordionIsland />);
 
-    // Memeriksa bahwa terdapat 6 tombol pemicu akordeon
+    // Memeriksa bahwa terdapat 7 tombol pemicu akordeon
     const triggers = screen.getAllByRole('button').filter((btn) => btn.hasAttribute('aria-expanded'));
-    expect(triggers).toHaveLength(6);
+    expect(triggers).toHaveLength(7);
   });
 
   it('setiap tombol pemicu akordeon memiliki atribut aksesibilitas aria-expanded dan aria-controls', () => {
@@ -56,6 +56,24 @@ describe('FaqAccordionIsland (FR-LP-09, NFR-LP-03)', () => {
     }
 
     expect(screen.getByText(/Non-Blocking Placement/i)).toBeInTheDocument();
+  });
+
+  it('memastikan penjelasan fitur Multi-Ruang Kerja (FR-13) dan mode duplikasi semester dapat diakses pada jawaban pertanyaan ke-7', async () => {
+    const user = userEvent.setup();
+    render(<FaqAccordionIsland />);
+
+    const triggers = screen.getAllByRole('button').filter((btn) => btn.hasAttribute('aria-expanded'));
+    const q7Trigger = triggers[6]; // Pertanyaan ke-7
+
+    expect(q7Trigger).toBeDefined();
+
+    // Buka panel pertanyaan ke-7 bila belum terbuka
+    if (q7Trigger.getAttribute('aria-expanded') !== 'true') {
+      await user.click(q7Trigger);
+    }
+
+    expect(screen.getByText(/Konfigurasi & Data Master Saja/i)).toBeInTheDocument();
+    expect(screen.getByText(/Salin Penuh/i)).toBeInTheDocument();
   });
 
   it('menerapkan estetika teknis radix-lyra dengan sudut tajam rounded-none', () => {

@@ -11,6 +11,36 @@ import { Button } from '@/components/ui/button';
 import { AlertTriangle, CheckCircle2, Clock, Zap, RefreshCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+const COL_START_CLASSES: Record<number, string> = {
+  1: 'col-start-1',
+  2: 'col-start-2',
+  3: 'col-start-3',
+  4: 'col-start-4',
+  5: 'col-start-5',
+  6: 'col-start-6',
+  7: 'col-start-7',
+  8: 'col-start-8',
+  9: 'col-start-9',
+  10: 'col-start-10',
+  11: 'col-start-11',
+  12: 'col-start-12',
+};
+
+const COL_SPAN_CLASSES: Record<number, string> = {
+  1: 'col-span-1',
+  2: 'col-span-2',
+  3: 'col-span-3',
+  4: 'col-span-4',
+  5: 'col-span-5',
+  6: 'col-span-6',
+  7: 'col-span-7',
+  8: 'col-span-8',
+  9: 'col-span-9',
+  10: 'col-span-10',
+  11: 'col-span-11',
+  12: 'col-span-12',
+};
+
 export const ConflictPlaygroundIsland: React.FC = () => {
   const [activeScenarioId, setActiveScenarioId] = React.useState<SimulationScenario['id']>('TEACHER_OVERLAP');
 
@@ -220,9 +250,10 @@ function renderSessionCard(session: ScheduleSession) {
   return (
     <div
       key={session.id}
-      style={{ gridColumn: `${colStart} / span ${colSpan}` }}
       className={cn(
         'rounded-none border p-2 flex flex-col justify-between transition-all select-none',
+        COL_START_CLASSES[colStart] || 'col-start-1',
+        COL_SPAN_CLASSES[colSpan] || 'col-span-1',
         session.isConflicting
           ? 'border-2 border-red-600 dark:border-red-500 bg-red-500/10 text-red-950 dark:text-red-100 ring-1 ring-red-500'
           : 'border-border bg-card hover:border-primary/50 text-foreground'

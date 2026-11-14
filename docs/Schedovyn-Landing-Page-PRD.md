@@ -4,7 +4,7 @@
 |---|---|
 | **Nama Proyek** | Schedovyn Landing Page (Marketing & Product Showcase Web) |
 | **Produk Induk** | Schedovyn (*Smart Timetable Planner*) |
-| **Versi Dokumen** | 1.1.0 |
+| **Versi Dokumen** | 1.2.0 |
 | **Status** | Siap Untuk Perancangan & Eksekusi Proyek Mandiri |
 | **Framework Utama** | **Astro** (Static Site Generation + Astro Islands Architecture) |
 | **Target Audiens** | Kepala Sekolah, Wakil Kepala Sekolah Bidang Kurikulum, Staf Tata Usaha/Kurikulum, dan Guru Penyusun Jadwal |
@@ -16,22 +16,23 @@
 ## 1. Ringkasan Eksekutif & Visi Produk
 
 ### 1.1 Latar Belakang Masalah
-Menyusun jadwal pelajaran mingguan di sekolah (SD, SMP, SMA, SMK, maupun Madrasah) adalah salah satu pekerjaan paling rumit setiap awal semester. Tim kurikulum harus mencocokkan puluhan guru, belasan hingga puluhan kelas, ruang laboratorium terbatas, jam istirahat yang berbeda (seperti hari Jumat), dan pembatasan hari hadir guru. Penggunaan kertas tempel atau *spreadsheet* manual sering kali berujung pada **bentrokan jadwal guru lintas kelas** yang baru disadari ketika kegiatan belajar-mengajar sudah berjalan.
+Menyusun jadwal pelajaran mingguan di sekolah (SD, SMP, SMA, SMK, maupun Madrasah) adalah salah satu pekerjaan paling rumit setiap awal semester. Tim kurikulum harus mencocokkan puluhan guru, belasan hingga puluhan kelas, ruang laboratorium terbatas, jam istirahat yang berbeda (seperti hari Jumat), dan pembatasan hari hadir guru. Penggunaan kertas tempel atau *spreadsheet* manual sering kali berujung pada **bentrokan jadwal guru lintas kelas** yang baru disadari ketika kegiatan belajar-mengajar sudah berjalan. Selain itu, saat memasuki semester atau tahun ajaran baru, tim kurikulum sering terpaksa mengetik ulang seluruh data guru, kelas, dan mata pelajaran dari awal atau takut merusak jadwal aktif ketika ingin mencoba skenario simulasi jadwal baru.
 
 Di sisi lain, banyak sekolah enggan menggunakan aplikasi penjadwalan berbasis *cloud* berbayar karena kendala anggaran, birokrasi pendaftaran akun, kekhawatiran privasi data sekolah, atau koneksi internet ruang guru yang tidak stabil.
 
 ### 1.2 Solusi yang Ditawarkan Schedovyn
 **Schedovyn** hadir sebagai aplikasi penyusun jadwal pembelajaran visual berbasis konsep *Smart Timetable Planner* yang berjalan **100% di peramban pengguna (*Client-Side & Local-First*)**:
 1. **Tanpa Login & Tanpa Server:** Buka aplikasi dan langsung mulai menyusun jadwal dalam hitungan detik tanpa registrasi akun.
-2. **Deteksi Konflik Lintas Kelas Otomatis (*Smart Conflict Detection*):** Menyunting satu kelas pada satu waktu, namun sistem selalu memeriksa bentrokan guru, ruangan, jam sekolah, dan waktu istirahat terhadap seluruh kelas di sekolah secara *real-time*.
-3. **100% Offline & PWA:** Dapat dipasang (*install*) ke laptop/komputer dan digunakan penuh tanpa koneksi internet.
-4. **Siap Cetak & Olah Data:** Ekspor langsung ke dokumen PDF *landscape* siap tempel di papan pengumuman dan berkas Excel (`.xlsx`) multi-*worksheet* untuk rekapitulasi jam mengajar guru.
+2. **Deteksi Konflik Lintas Kelas Otomatis (*Smart Conflict Detection*):** Menyunting satu kelas pada satu waktu, namun sistem selalu memeriksa bentrokan guru, ruangan, jam sekolah, dan waktu istirahat terhadap seluruh kelas di dalam ruang kerja secara *real-time*.
+3. **Pengelolaan Multi-Ruang Kerja & Duplikasi Semester (*Multi-Workspace*):** Kelola beberapa ruang kerja terpisah di satu peramban untuk memisahkan jadwal antar-semester, tahun ajaran, atau skenario simulasi jadwal. Gandakan ruang kerja ke semester baru hanya dengan menyalin konfigurasi & data master tanpa perlu mengetik ulang data guru dan kelas, atau salin penuh beserta jadwal untuk eksperimen simulasi.
+4. **100% Offline & PWA:** Dapat dipasang (*install*) ke laptop/komputer dan digunakan penuh tanpa koneksi internet.
+5. **Siap Cetak & Olah Data:** Ekspor langsung ke dokumen PDF *landscape* siap tempel di papan pengumuman dan berkas Excel (`.xlsx`) multi-*worksheet* untuk rekapitulasi jam mengajar guru.
 
 ### 1.3 Tujuan Proyek Landing Page
 Membangun situs *Landing Page* mandiri berbasis **Astro** yang berfungsi sebagai **wajah utama produk Schedovyn** dengan tujuan:
 1. Menjelaskan proposisi nilai utama Schedovyn secara instan dalam 5 detik pertama kunjungan (*Hero Section*).
-2. Mendemonstrasikan cara kerja **Deteksi Konflik Lintas Kelas** dan **Validasi 4 Status** secara visual dan interaktif sehingga calon pengguna langsung percaya pada keandalan sistem.
-3. Menghilangkan keraguan pengguna terkait keamanan data lokal (*Local-First Privacy*) dan kemampuan kerja tanpa internet (*PWA Offline*).
+2. Mendemonstrasikan cara kerja **Deteksi Konflik Lintas Kelas**, **Validasi 4 Status**, dan pengelolaan **Multi-Ruang Kerja (*Multi-Workspace*)** secara visual dan interaktif sehingga calon pengguna langsung percaya pada keandalan sistem.
+3. Menghilangkan keraguan pengguna terkait keamanan data lokal (*Local-First Privacy*), isolasi antar-ruang kerja di peramban, dan kemampuan kerja tanpa internet (*PWA Offline*).
 4. Mengonversi pengunjung menjadi pengguna aktif melalui tombol panggilan aksi (*Call-to-Action* / CTA) langsung menuju aplikasi utama (**Buka Aplikasi Schedovyn**) serta mengarahkan pengguna baru ke **Portal Panduan Pemakaian (User Guide)**.
 
 ---
@@ -39,14 +40,14 @@ Membangun situs *Landing Page* mandiri berbasis **Astro** yang berfungsi sebagai
 ## 2. Target Pengguna & Persona Pengunjung
 
 ### 2.1 Persona 1: Wakil Kepala Sekolah Bidang Kurikulum (Pengambil Keputusan Teknis)
-- **Kebutuhan:** Memastikan jadwal seluruh sekolah selesai tepat waktu sebelum hari pertama masuk sekolah tanpa ada satu pun guru yang bentrok mengajar di dua kelas bersamaan.
+- **Kebutuhan:** Memastikan jadwal seluruh sekolah selesai tepat waktu sebelum hari pertama masuk sekolah tanpa ada satu pun guru yang bentrok mengajar di dua kelas bersamaan, serta dapat menyiapkan skenario jadwal Semester Genap dari data Semester Ganjil tanpa mengganggu jadwal yang sedang berjalan.
 - **Kekhawatiran:** Takut aplikasi sulit dipelajari, takut jadwal masih menyisakan jam pelajaran yang terlewat (*belum lengkap*), dan butuh laporan beban mengajar guru dalam format Excel.
-- **Pesan Kunci di Landing Page:** *"Deteksi otomatis 7 jenis konflik jadwal dan rekap otomatis beban jam mengajar guru ke Excel."*
+- **Pesan Kunci di Landing Page:** *"Deteksi otomatis 7 jenis konflik jadwal, kelola banyak ruang kerja antar-semester, dan rekap otomatis beban jam mengajar guru ke Excel."*
 
 ### 2.2 Persona 2: Staf Kurikulum / Operator Sekolah (Eksekutor Harian)
-- **Kebutuhan:** Alat kerja visual yang cepat, mendukung *drag-and-drop*, bisa *Undo/Redo* (`Ctrl+Z`), bisa menyalin jadwal antar-kelas paralel, dan tidak lemot saat internet sekolah sedang mati.
-- **Kekhawatiran:** Lelah menyusun jadwal di Excel yang rumit; takut pekerjaan hilang jika tab peramban tidak sengaja tertutup.
-- **Pesan Kunci di Landing Page:** *"Tarik-lepas sesi pelajaran secepat kilat, tersimpan otomatis di peramban, dan bekerja 100% tanpa internet."*
+- **Kebutuhan:** Alat kerja visual yang cepat, mendukung *drag-and-drop*, bisa *Undo/Redo* (`Ctrl+Z`), bisa menyalin jadwal antar-kelas paralel, bisa mengkloning data master guru/kelas ke ruang kerja semester baru sekali klik, dan tidak lemot saat internet sekolah sedang mati.
+- **Kekhawatiran:** Lelah menyusun jadwal di Excel yang rumit dan mengetik ulang data master setiap pergantian semester; takut pekerjaan hilang jika tab peramban tidak sengaja tertutup.
+- **Pesan Kunci di Landing Page:** *"Tarik-lepas sesi pelajaran secepat kilat, kloning ruang kerja untuk semester baru tanpa input ulang data master, tersimpan otomatis di peramban, dan bekerja 100% tanpa internet."*
 
 ### 2.3 Persona 3: Kepala Sekolah (Penanggung Jawab Kebijakan)
 - **Kebutuhan:** Solusi modern yang meningkatkan kerapian administrasi akademik tanpa membebani anggaran langganan bulanan atau risiko kebocoran data internal sekolah ke pihak ketiga.
@@ -98,7 +99,7 @@ schedovyn-landing/
 │   │   │   └── FaqAccordionIsland.tsx        # (client:visible) Akordeon tanya jawab
 │   │   └── ui/                     # Komponen primitif radix-lyra (Button, Card, Badge, Tabs)
 │   ├── data/
-│   │   ├── features.ts             # Data terstruktur fitur FR-01 s.d. FR-12 & PWA
+│   │   ├── features.ts             # Data terstruktur fitur FR-01 s.d. FR-13 & PWA
 │   │   ├── simulation-scenarios.ts # Data jadwal & konflik untuk mini-playground
 │   │   └── faqs.ts                 # Daftar pertanyaan & jawaban FAQ
 │   ├── layouts/
@@ -140,7 +141,7 @@ Agar *Landing Page* terasa menyatu secara utuh dengan aplikasi utama Schedovyn, 
      - Hijau Zamrud (`emerald`): Jadwal lengkap dan valid.
 4. **Aturan Copywriting:**
    - Menggunakan Bahasa Indonesia yang lugas, profesional, dan akrab bagi dunia pendidikan Indonesia.
-   - **Larangan Keras:** Dilarang menggunakan karakter *em dash* (`—`) pada seluruh teks halaman; gunakan tanda hubung biasa (`-`), titik dua (`:`), atau pemisahan kalimat.
+   - **Larangan Keras:** Dilarang menggunakan karakter tanda pisah panjang (*em dash*) pada seluruh teks halaman; gunakan tanda hubung biasa (`-`), titik dua (`:`), atau pemisahan kalimat.
 
 ---
 
@@ -173,11 +174,11 @@ Landing Page dirancang sebagai halaman tunggal yang kaya informasi (*High-Conver
   - `Ekspor PDF Cetak & Excel Rekap Guru`
   - `Mendukung Mode Offline (PWA)`
 - **Visual Utama (*Hero Mockup*):**
-  - Ilustrasi komponen UI presisi 3 panel Editor Schedovyn (Panel Sesi Belum Terjadwal di kiri, Grid Mingguan dengan blok mata pelajaran berwarna di tengah, serta Panel Detail & Deteksi Konflik di kanan).
+  - Ilustrasi komponen UI presisi 3 panel Editor Schedovyn lengkap dengan bilah alat atas yang menampilkan **Pemilih Ruang Kerja Aktif (*Workspace Switcher*)** (misal: `SMPN 1 Nusantara - Semester Ganjil`), pemilih **Kelas Aktif** (`Kelas VII-A`), indikator penyimpanan lokal (`Tersimpan di browser`), serta 3 area utama (Panel Sesi Belum Terjadwal di kiri, Grid Mingguan dengan blok mata pelajaran berwarna di tengah, serta Panel Detail & Deteksi Konflik di kanan).
 
 ### FR-LP-03: Seksi Masalah vs Solusi (`ProblemSolutionSection.astro`)
 - Menyandingkan penderitaan penyusunan jadwal cara lama dengan cara kerja cerdas Schedovyn dalam tabel/kartu komparasi:
-  1. **Cara Lama (Spreadsheet / Manual):** Sulit melacak guru yang sama mengajar di kelas VII-A dan VIII-B pada jam beririsan $\rightarrow$ **Cara Schedovyn:** Mesin deteksi konflik memindai seluruh kelas di sekolah dalam waktu `< 5 milidetik` setiap kali sesi digeser.
+  1. **Cara Lama (Spreadsheet / Manual):** Sulit melacak guru yang sama mengajar di kelas VII-A dan VIII-B pada jam beririsan $\rightarrow$ **Cara Schedovyn:** Mesin deteksi konflik memindai seluruh kelas di dalam ruang kerja aktif dalam waktu `< 5 milidetik` setiap kali sesi digeser.
   2. **Cara Lama:** Sesi terlewat atau jumlah jam pelajaran kurang dari target kurikulum $\rightarrow$ **Cara Schedovyn:** Panel Sesi Belum Terjadwal menghitung sisa alokasi mingguan secara otomatis.
   3. **Cara Lama:** Bingung membedakan jadwal yang sudah aman dengan jadwal yang baru terisi sebagian $\rightarrow$ **Cara Schedovyn:** 4 Status Validasi Transparan (*Konflik Ditemukan*, *Belum Lengkap*, *Tidak Ada Konflik pada Data Saat Ini*, dan *Jadwal Lengkap dan Valid*).
 
@@ -191,39 +192,41 @@ Landing Page dirancang sebagai halaman tunggal yang kaya informasi (*High-Conver
     4. **Skenario 4: Resolusi Konflik Instan** - Menggeser sesi ke jam kosong langsung mengubah status menjadi hijau (*Valid*).
 
 ### FR-LP-05: Seksi Sorotan Fitur Lengkap (`FeatureBentoGrid.astro`)
-Menampilkan seluruh kemampuan Schedovyn (FR-01 s.d. FR-12 & PWA) dalam tata letak *Bento Grid* berbingkai tajam:
-1. **Konfigurasi Jam Belajar Fleksibel:** Atur hari sekolah aktif (5 atau 6 hari), jam pulang hari Jumat yang lebih awal, beberapa periode istirahat, dan interval *snap grid* (`15`, `30`, `45`, atau `60` menit).
-2. **Manajemen Data Master & Ketersediaan:** Kelola Kelas, Mata Pelajaran dengan 10 palet warna kontras tinggi (WCAG AA), Guru beserta jadwal ketidaktersediaan (*unavailable intervals*), dan Ruangan Khusus (Lab IPA, Lab Komputer, Lapangan).
-3. **Penyalinan Jadwal Kelas Paralel:** Duplikasi susunan jadwal dari Kelas VII-A ke VII-B dalam sekali klik dengan pilihan strategi guru/ruangan (*Gunakan Guru Default Kelas Tujuan*, *Salin Guru Sumber*, atau *Kosongkan*).
-4. **Riwayat Perubahan 50 Langkah (*Undo & Redo*):** Bebas bereksperimen mengatur ulang jadwal dengan pintasan `Ctrl+Z` dan `Ctrl+Y`.
-5. **Penyimpanan Lokal Jujur & Tangguh:** Auto-save ke IndexedDB peramban tanpa tombol simpan manual, lengkap dengan diagnostik kapasitas penyimpanan.
-6. **Aksesibilitas Keyboard Penuh:** Tidak harus selalu menggunakan *mouse drag*; geser waktu sesi dengan `Alt + Panah` atau tempatkan sesi langsung dari panel melalui kontrol formulir.
+Menampilkan seluruh kemampuan Schedovyn (FR-01 s.d. FR-13 & PWA) dalam tata letak *Bento Grid* berbingkai tajam:
+1. **Konfigurasi Jam Belajar Fleksibel (`FR-01`):** Atur hari sekolah aktif (5 atau 6 hari), jam pulang hari Jumat yang lebih awal, beberapa periode istirahat, dan interval *snap grid* (`15`, `30`, `45`, atau `60` menit).
+2. **Manajemen Data Master & Ketersediaan (`FR-02 & FR-03`):** Kelola Kelas, Mata Pelajaran dengan 10 palet warna kontras tinggi (WCAG AA), Guru beserta jadwal ketidaktersediaan (*unavailable intervals*), dan Ruangan Khusus (Lab IPA, Lab Komputer, Lapangan).
+3. **Penyalinan Jadwal Kelas Paralel (`FR-12`):** Duplikasi susunan jadwal dari Kelas VII-A ke VII-B dalam sekali klik dengan pilihan strategi guru/ruangan (*Gunakan Guru Default Kelas Tujuan*, *Salin Guru Sumber*, atau *Kosongkan*).
+4. **Pengelolaan Multi-Ruang Kerja & Duplikasi Semester (`FR-13`):** Kelola beberapa ruang kerja (*workspace*) terpisah di satu peramban untuk memisahkan jadwal antar-semester, tahun ajaran, atau skenario simulasi. Dilengkapi *Workspace Switcher* instan, pembuatan ruang kerja baru (*Ruang Kerja Kosong* atau *Muat Data Contoh*), serta *Clone Workspace* dengan 2 mode (*Konfigurasi & Data Master Saja* untuk memulai semester baru tanpa input ulang data master, atau *Salin Penuh Beserta Jadwal* untuk simulasi) dengan isolasi penuh atas deteksi konflik dan riwayat *Undo/Redo*.
+5. **Riwayat Perubahan 50 Langkah (*Undo & Redo* - `FR-07`):** Bebas bereksperimen mengatur ulang jadwal dengan pintasan `Ctrl+Z` dan `Ctrl+Y`.
+6. **Penyimpanan Lokal Jujur & Tangguh (`FR-10 & PWA`):** Auto-save ke IndexedDB peramban tanpa tombol simpan manual, pemulihan otomatis ruang kerja aktif terakhir, lengkap dengan diagnostik kapasitas penyimpanan.
+7. **Aksesibilitas Keyboard Penuh (`FR-04 & Aksesibilitas`):** Tidak harus selalu menggunakan *mouse drag*; geser waktu sesi dengan `Alt + Panah` atau tempatkan sesi langsung dari panel melalui kontrol formulir.
 
 ### FR-LP-06: Seksi Pameran Hasil Ekspor (`ExportShowcaseTabsIsland.tsx`)
 - Dirender sebagai **Astro Island (`client:visible`)** yang menampilkan pratinjau visual hasil keluaran dokumen:
-  - **Tab 1: Dokumen PDF Cetak Landscape:** Menunjukkan tata letak tabel matriks mingguan per kelas maupun seluruh sekolah, lengkap dengan lencana status validasi dan daftar catatan konflik.
+  - **Tab 1: Dokumen PDF Cetak Landscape:** Menunjukkan tata letak tabel matriks mingguan per kelas maupun seluruh kelas dalam ruang kerja aktif, lengkap dengan lencana status validasi dan daftar catatan konflik.
   - **Tab 2: Spreadsheet Excel (`.xlsx`) Multi-Worksheet:** Menunjukkan 4 lembar kerja terstruktur (`Jadwal`, `Rekap Guru` untuk menghitung total beban jam mengajar mingguan, `Rekap Ruangan` untuk melihat utilisasi lab, dan `Konflik`), dilengkapi fitur *AutoFilter* dan keamanan sanitasi formula.
 
 ### FR-LP-07: Seksi Alur Kerja 4 Langkah (`HowItWorksSection.astro`)
-Menjelaskan betapa mudahnya memulai dari nol hingga jadwal siap terbit:
-1. **Langkah 1: Atur Jam Sekolah & Istirahat** (Konfigurasi hari aktif dan durasi slot).
-2. **Langkah 2: Masukkan Data Master & Kebutuhan Sesi** (Input kelas, guru, mapel, ruangan, dan target sesi mingguan).
-3. **Langkah 3: Susun di Kanvas & Selesaikan Konflik** (Tarik kartu ke grid atau salin jadwal antar-kelas paralel, dipandu deteksi konflik otomatis).
+Menjelaskan betapa mudahnya memulai dari nol atau melanjutkan semester baru hingga jadwal siap terbit:
+1. **Langkah 1: Siapkan Ruang Kerja, Jam Sekolah & Istirahat** (Buat ruang kerja baru dari kosong, muat data contoh, atau kloning konfigurasi & data master dari semester sebelumnya, lalu atur hari aktif dan durasi slot).
+2. **Langkah 2: Masukkan Data Master & Kebutuhan Sesi** (Input atau sesuaikan kelas, guru, mapel, ruangan, dan target sesi mingguan).
+3. **Langkah 3: Susun di Kanvas & Selesaikan Konflik** (Tarik kartu ke grid atau salin jadwal antar-kelas paralel, dipandu deteksi konflik otomatis di dalam ruang kerja aktif).
 4. **Langkah 4: Cetak PDF & Unduh Rekap Excel** (Jadwal siap dibagikan ke guru dan siswa).
 
 ### FR-LP-08: Seksi Arsitektur Privasi & Keterbatasan Penyimpanan Lokal (`PrivacyArchitectureSection.astro`)
 - Memberikan edukasi jujur sesuai prinsip produk:
-  - Data 100% tersimpan di dalam peramban perangkat pengguna (IndexedDB), tidak pernah dikirim ke server mana pun.
-  - Penjelasan transparan bahwa membersihkan *site data* peramban dapat menghapus data lokal, sehingga pengguna dianjurkan mengekspor jadwal ke PDF/Excel secara berkala.
+  - Data 100% tersimpan di dalam peramban perangkat pengguna (IndexedDB), mendukung penyimpanan beberapa ruang kerja (*multi-workspace*) yang terisolasi penuh beserta pemulihan otomatis ruang kerja aktif terakhir tanpa pernah dikirim ke server mana pun.
+  - Penjelasan transparan bahwa fitur duplikasi ruang kerja (*Salin Penuh*) menjaga variasi skenario di dalam peramban yang sama, namun membersihkan *site data* peramban dapat menghapus seluruh data lokal, sehingga pengguna dianjurkan mengekspor jadwal ke PDF/Excel secara berkala sebagai arsip resmi di luar peramban.
 
 ### FR-LP-09: Seksi Pertanyaan Umum (`FaqAccordionIsland.tsx`)
-Memuat jawaban atas pertanyaan yang paling sering diajukan pihak sekolah:
+Memuat jawaban atas 7 pertanyaan yang paling sering diajukan pihak sekolah:
 1. *Apakah Schedovyn benar-benar gratis dan tanpa perlu membuat akun?*
 2. *Apakah aplikasi ini bisa digunakan saat koneksi internet sekolah mati?*
 3. *Bagaimana jika satu guru mengajar di banyak kelas dan memiliki hari libur khusus (misal guru tidak hadir hari Selasa)?*
 4. *Apakah saya bisa memindahkan jadwal kelas yang mirip tanpa menyusun ulang dari awal?*
 5. *Di mana data jadwal saya disimpan dan bagaimana cara mengamankannya?*
 6. *Mengapa jadwal tetap diizinkan ditempatkan ke grid meskipun berkonflik?* (Penjelasan konsep *Non-Blocking Placement* agar penyuntingan tetap luwes).
+7. *Bagaimana cara menyiapkan jadwal untuk semester baru atau membuat simulasi jadwal tanpa merusak jadwal yang sedang berjalan?* (Penjelasan fitur **Multi-Ruang Kerja / Multi-Workspace (`FR-13`)** beserta dua mode duplikasi: *Konfigurasi & Data Master Saja* untuk pergantian semester tanpa mengetik ulang data guru/kelas, dan *Salin Penuh Beserta Jadwal* untuk eksperimen simulasi terisolasi).
 
 ### FR-LP-10: Banner Penutup (Bottom CTA) & Footer (`BottomCtaSection.astro` & `Footer.astro`)
 - **Banner Penutup:** Ajakan terakhir untuk langsung mencoba aplikasi atau membaca buku panduan lengkap.
@@ -254,3 +257,4 @@ Memuat jawaban atas pertanyaan yang paling sering diajukan pihak sekolah:
 - **AC-LP-04:** Pengunjung dapat beralih tab pada Astro Island **Pameran Hasil Ekspor** (`ExportShowcaseTabsIsland.tsx`) untuk melihat representasi visual dokumen PDF *landscape* dan *workbook* Excel 4 *worksheet*.
 - **AC-LP-05:** Seluruh halaman mendukung pergantian mode Terang dan Gelap secara instan serta mematuhi aturan desain `radix-lyra` (`rounded-none`, `tabular-nums`, bebas karakter *em dash*).
 - **AC-LP-06:** Seluruh tautan menuju **Portal Panduan Pemakaian (User Guide)** dapat diakses dengan jelas dari navigasi atas, Hero, dan Footer.
+- **AC-LP-07:** Kemampuan terbaru **Pengelolaan Multi-Ruang Kerja (`FR-13`)** (termasuk *Workspace Switcher*, duplikasi ruang kerja mode *Konfigurasi & Data Master Saja* vs *Salin Penuh Beserta Jadwal*, serta isolasi ruang kerja di IndexedDB) ditampilkan secara akurat pada *Hero Mockup*, *Feature Bento Grid*, *How It Works*, dan *FAQ*.

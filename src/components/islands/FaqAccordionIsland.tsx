@@ -4,14 +4,9 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const FaqAccordionIsland: React.FC = () => {
-  const [openIds, setOpenIds] = React.useState<Record<string, boolean>>({
-    'faq-1': false,
-    'faq-2': false,
-    'faq-3': false,
-    'faq-4': false,
-    'faq-5': false,
-    'faq-6': false,
-  });
+  const [openIds, setOpenIds] = React.useState<Record<string, boolean>>(() =>
+    Object.fromEntries(FAQ_ITEMS.map((item) => [item.id, false]))
+  );
 
   const toggleItem = (id: string) => {
     setOpenIds((prev) => ({

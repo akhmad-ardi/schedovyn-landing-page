@@ -4,8 +4,8 @@ export interface FeatureBentoItem {
   title: string;
   description: string;
   details: string[];
-  colSpanClass: string;
-  iconName: string;
+  colSpanClass: 'lg:col-span-1' | 'lg:col-span-2';
+  iconName: 'Clock' | 'Users' | 'Copy' | 'Layers' | 'History' | 'Database' | 'Keyboard';
 }
 
 export interface ExcelWorksheet {
@@ -28,7 +28,7 @@ export interface ExportShowcaseTab {
 export const FEATURE_BENTO_ITEMS: FeatureBentoItem[] = [
   {
     id: 'flexible-time-config',
-    badge: 'FR-01 & FR-02',
+    badge: 'FR-01',
     title: 'Konfigurasi Jam Belajar Fleksibel',
     description: 'Atur hari sekolah aktif (5 atau 6 hari kerja), jam pulang hari Jumat yang lebih awal, dan beberapa waktu jeda istirahat.',
     details: [
@@ -41,7 +41,7 @@ export const FEATURE_BENTO_ITEMS: FeatureBentoItem[] = [
   },
   {
     id: 'master-data-contrast',
-    badge: 'FR-03 & FR-04',
+    badge: 'FR-02 & FR-03',
     title: 'Manajemen Data Master & Ketersediaan',
     description: 'Kelola Kelas, Mata Pelajaran, Ruangan Khusus (Lab IPA, Lab Komputer, Lapangan), dan jadwal ketersediaan guru.',
     details: [
@@ -54,7 +54,7 @@ export const FEATURE_BENTO_ITEMS: FeatureBentoItem[] = [
   },
   {
     id: 'parallel-class-copy',
-    badge: 'FR-09',
+    badge: 'FR-12',
     title: 'Penyalinan Jadwal Kelas Paralel',
     description: 'Salin susunan jadwal dari satu kelas ke kelas paralel lain dalam sekali klik tanpa perlu mengulang dari nol.',
     details: [
@@ -66,8 +66,21 @@ export const FEATURE_BENTO_ITEMS: FeatureBentoItem[] = [
     iconName: 'Copy',
   },
   {
+    id: 'multi-workspace-management',
+    badge: 'FR-13',
+    title: 'Pengelolaan Multi-Ruang Kerja & Duplikasi Semester',
+    description: 'Kelola beberapa ruang kerja terpisah di satu peramban untuk memisahkan jadwal antar-semester, tahun ajaran, atau skenario simulasi jadwal.',
+    details: [
+      'Workspace Switcher instan di header dengan isolasi penuh deteksi konflik dan riwayat Undo/Redo per ruang kerja',
+      'Duplikasi ruang kerja (Clone Workspace): pilih mode Konfigurasi & Data Master Saja untuk semester baru atau Salin Penuh Beserta Jadwal',
+      'Inisialisasi fleksibel (Ruang Kerja Kosong atau Muat Data Contoh) dan pemulihan otomatis ruang kerja aktif terakhir',
+    ],
+    colSpanClass: 'lg:col-span-2',
+    iconName: 'Layers',
+  },
+  {
     id: 'undo-redo-history',
-    badge: 'FR-11',
+    badge: 'FR-07',
     title: 'Riwayat Perubahan 50 Langkah (Undo & Redo)',
     description: 'Bebas bereksperimen mengatur variasi jadwal tanpa khawatir kehilangan tata letak sebelumnya.',
     details: [
@@ -75,7 +88,7 @@ export const FEATURE_BENTO_ITEMS: FeatureBentoItem[] = [
       'Pintasan keyboard universal Ctrl+Z (Undo) dan Ctrl+Y (Redo)',
       'Sinkronisasi riwayat instan dengan kanvas penyusunan jadwal',
     ],
-    colSpanClass: 'lg:col-span-2',
+    colSpanClass: 'lg:col-span-1',
     iconName: 'History',
   },
   {
@@ -88,12 +101,12 @@ export const FEATURE_BENTO_ITEMS: FeatureBentoItem[] = [
       'Bekerja 100% offline sebagai Progressive Web App (PWA)',
       'Diagnostik kapasitas penyimpanan lokal yang transparan',
     ],
-    colSpanClass: 'lg:col-span-2',
+    colSpanClass: 'lg:col-span-1',
     iconName: 'Database',
   },
   {
     id: 'keyboard-first-accessibility',
-    badge: 'FR-08 & Aksesibilitas',
+    badge: 'FR-04 & Aksesibilitas',
     title: 'Aksesibilitas Keyboard Penuh',
     description: 'Susun dan geser jadwal dengan cepat tanpa harus selalu mengandalkan kursor mouse atau layar sentuh.',
     details: [

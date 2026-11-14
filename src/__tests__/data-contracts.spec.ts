@@ -53,7 +53,7 @@ describe('Data Contracts Verification', () => {
       expect(allText).toMatch(/4 Status Validasi/i);
     });
 
-    it('memiliki tepat 4 langkah alur kerja berurutan 01 s.d. 04 sesuai FR-LP-07', async () => {
+    it('memiliki tepat 4 langkah alur kerja berurutan 01 s.d. 04 sesuai FR-LP-07 termasuk inisialisasi ruang kerja pada langkah 01', async () => {
       const { SITE_CONFIG } = await import('../data/site-config');
 
       expect(SITE_CONFIG.workflowSteps).toHaveLength(4);
@@ -65,6 +65,10 @@ describe('Data Contracts Verification', () => {
         expect(step.description.length).toBeGreaterThan(0);
         expect(step.highlightTag.length).toBeGreaterThan(0);
       }
+
+      // Verifikasi langkah 01 memuat kata kunci ruang kerja/workspace/semester sesuai FR-LP-07
+      const step1Text = JSON.stringify(SITE_CONFIG.workflowSteps[0]);
+      expect(step1Text).toMatch(/(?:ruang kerja|workspace|semester)/i);
     });
   });
 
@@ -149,10 +153,10 @@ describe('Data Contracts Verification', () => {
   });
 
   describe('FEATURE_BENTO_ITEMS & EXPORT_SHOWCASE_TABS (src/data/features.ts)', () => {
-    it('FEATURE_BENTO_ITEMS memiliki tepat 6 kartu fitur dengan highlight spesifik', async () => {
+    it('FEATURE_BENTO_ITEMS memiliki tepat 7 kartu fitur dengan highlight spesifik dan total bobot 9 kolom', async () => {
       const { FEATURE_BENTO_ITEMS } = await import('../data/features');
 
-      expect(FEATURE_BENTO_ITEMS).toHaveLength(6);
+      expect(FEATURE_BENTO_ITEMS).toHaveLength(7);
 
       const allContent = JSON.stringify(FEATURE_BENTO_ITEMS);
       // Konfigurasi jam belajar (15, 30, 45, 60 menit)
@@ -176,6 +180,34 @@ describe('Data Contracts Verification', () => {
 
       // Aksesibilitas keyboard Alt + Panah
       expect(allContent).toMatch(/Alt\s*\+\s*Panah/i);
+
+      // Verifikasi total bobot kolom adalah tepat 9 (3 baris penuh x 3 kolom)
+      const totalColSpan = FEATURE_BENTO_ITEMS.reduce(
+        (sum, item) => sum + (item.colSpanClass === 'lg:col-span-2' ? 2 : 1),
+        0
+      );
+      expect(totalColSpan).toBe(9);
+    });
+
+    it('kartu ke-4 memvalidasi Pengelolaan Multi-Ruang Kerja (FR-13) dengan icon Layers dan detail mode duplikasi', async () => {
+      const { FEATURE_BENTO_ITEMS } = await import('../data/features');
+      const wsCard = FEATURE_BENTO_ITEMS.find((item) => item.id === 'multi-workspace-management');
+
+      expect(wsCard).toBeDefined();
+      expect(wsCard?.badge).toMatch(/FR-13/i);
+      expect(wsCard?.iconName).toBe('Layers');
+      expect(wsCard?.colSpanClass).toBe('lg:col-span-2');
+
+      const cardContent = JSON.stringify(wsCard);
+      // Workspace Switcher
+      expect(cardContent).toMatch(/Workspace Switcher/i);
+      // Mode duplikasi: Konfigurasi & Data Master Saja dan Salin Penuh
+      expect(cardContent).toMatch(/Konfigurasi & Data Master Saja/i);
+      expect(cardContent).toMatch(/Salin Penuh/i);
+      // Mode inisialisasi: Ruang Kerja Kosong atau Data Contoh
+      expect(cardContent).toMatch(/(?:Ruang Kerja Kosong|Data Contoh)/i);
+      // Isolasi Undo/Redo atau deteksi konflik
+      expect(cardContent).toMatch(/(?:Undo\/Redo|deteksi konflik)/i);
     });
 
     it('EXPORT_SHOWCASE_TABS memuat tab PDF Landscape dan Excel Multi-Worksheet dengan 4 sheet', async () => {
@@ -203,10 +235,10 @@ describe('Data Contracts Verification', () => {
   });
 
   describe('FAQ_ITEMS (src/data/faqs.ts)', () => {
-    it('memuat tepat 6 pertanyaan dan jawaban', async () => {
+    it('memuat tepat 7 pertanyaan dan jawaban', async () => {
       const { FAQ_ITEMS } = await import('../data/faqs');
 
-      expect(FAQ_ITEMS).toHaveLength(6);
+      expect(FAQ_ITEMS).toHaveLength(7);
       for (const faq of FAQ_ITEMS) {
         expect(faq.id.length).toBeGreaterThan(0);
         expect(faq.question.length).toBeGreaterThan(0);
@@ -222,6 +254,21 @@ describe('Data Contracts Verification', () => {
       expect(q6).toBeDefined();
       expect(q6.question).toMatch(/konflik|grid/i);
       expect(q6.answer).toMatch(/Non-Blocking Placement/i);
+    });
+
+    it('item FAQ ke-7 menjelaskan fitur Multi-Ruang Kerja (FR-13) dan duplikasi semester secara lengkap', async () => {
+      const { FAQ_ITEMS } = await import('../data/faqs');
+      const q7 = FAQ_ITEMS[6];
+
+      expect(q7).toBeDefined();
+      expect(q7.id).toBe('faq-7');
+      expect(q7.question).toMatch(/(?:semester baru|simulasi jadwal)/i);
+
+      // Verifikasi jawaban memuat Multi-Ruang Kerja / Multi-Workspace
+      expect(q7.answer).toMatch(/(?:Multi-Ruang Kerja|Multi-Workspace)/i);
+      // Verifikasi mode Konfigurasi & Data Master Saja dan Salin Penuh Beserta Jadwal
+      expect(q7.answer).toMatch(/Konfigurasi & Data Master Saja/i);
+      expect(q7.answer).toMatch(/Salin Penuh Beserta Jadwal/i);
     });
   });
 });

@@ -5,6 +5,7 @@ import {
   Clock,
   Users,
   Copy,
+  Layers,
   History,
   Database,
   Keyboard,
@@ -25,7 +26,7 @@ import {
         Alat Kerja Presisi untuk Menyusun Jadwal Sekolah.
       </h2>
       <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
-        Dirancang dari bawah ke atas untuk menyelesaikan kerumitan riil di sekolah: mulai dari jam istirahat hari Jumat, batasan hari hadir guru, hingga penyalinan instan kelas paralel.
+        Dirancang dari bawah ke atas untuk menyelesaikan kerumitan riil di sekolah: mulai dari jam istirahat hari Jumat, batasan hari hadir guru, penyalinan instan kelas paralel, hingga pengelolaan multi-ruang kerja antar-semester.
       </p>
     </div>
 
@@ -39,6 +40,7 @@ import {
                 {item.iconName === 'Clock' && <Clock className="h-4.5 w-4.5" aria-hidden="true" />}
                 {item.iconName === 'Users' && <Users className="h-4.5 w-4.5" aria-hidden="true" />}
                 {item.iconName === 'Copy' && <Copy className="h-4.5 w-4.5" aria-hidden="true" />}
+                {item.iconName === 'Layers' && <Layers className="h-4.5 w-4.5" aria-hidden="true" />}
                 {item.iconName === 'History' && <History className="h-4.5 w-4.5" aria-hidden="true" />}
                 {item.iconName === 'Database' && <Database className="h-4.5 w-4.5" aria-hidden="true" />}
                 {item.iconName === 'Keyboard' && <Keyboard className="h-4.5 w-4.5" aria-hidden="true" />}

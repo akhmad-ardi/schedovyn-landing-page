@@ -106,10 +106,10 @@ export const SITE_CONFIG: SiteConfig = {
   workflowSteps: [
     {
       stepNumber: '01',
-      title: 'Atur Jam Sekolah & Istirahat',
-      description: 'Tentukan hari sekolah aktif (5 atau 6 hari), jam pulang khusus hari Jumat, serta jeda istirahat.',
-      highlightTag: 'Struktur Belajar',
-      detail: 'Konfigurasi slot waktu dengan interval snap grid fleksibel dari 15 hingga 60 menit.',
+      title: 'Siapkan Ruang Kerja, Jam Sekolah & Istirahat',
+      description: 'Buat ruang kerja baru atau gandakan data master dari semester sebelumnya, lalu tentukan hari sekolah aktif (5 atau 6 hari), jam pulang khusus hari Jumat, dan jeda istirahat.',
+      highlightTag: 'Ruang Kerja & Jam',
+      detail: 'Dukung multi-ruang kerja (Kosong, Data Contoh, atau Kloning Semester) dengan interval snap grid 15 hingga 60 menit.',
     },
     {
       stepNumber: '02',
